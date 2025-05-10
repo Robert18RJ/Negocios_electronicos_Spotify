@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Casos de Éxito y Adaptaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .case-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .case-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .key-learning {
+            background-color: rgba(29, 185, 84, 0.1);
+            border-left: 4px solid var(--spotify-green);
+            padding: 12px;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+        .key-learning:hover {
+            background-color: rgba(29, 185, 84, 0.15);
+            transform: translateX(5px);
+        }
+        .metric-highlight {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .metric-highlight:hover {
+            background-color: rgba(29, 185, 84, 0.15);
+        }
+        .company-logo {
+            height: 40px;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        .case-card:hover .company-logo {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Frans Vargas</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Casos de <span class="green-accent">Éxito</span> y Adaptaciones</h2>
+                <p class="text-xl text-gray-300">Cómo otras empresas han implementado el modelo Spotify</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <!-- Case Study 1: ING Bank -->
+                <div class="case-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-opacity-20 bg-blue-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-university text-blue-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">ING Bank</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-opacity-20 bg-blue-500 rounded-full text-xs font-semibold">Sector Financiero</span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mb-3">ING transformó su estructura organizativa adoptando Squads, Chapters y Tribes, adaptándolos al entorno altamente regulado de la banca. Implementaron "Agile Quarters" para coordinar trabajo en dominios relacionados.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">56%</p>
+                            <p class="text-xs text-gray-400">Reducción time-to-market</p>
+                        </div>
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">38%</p>
+                            <p class="text-xs text-gray-400">Aumento en satisfacción</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-opacity-10 bg-white p-2 rounded text-xs">
+                        <p class="font-semibold mb-1">Adaptación clave:</p>
+                        <p>Implementaron una "Capa de Coordinación" para gestionar requisitos regulatorios y dependencias entre tribus</p>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2: Zalando -->
+                <div class="case-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-opacity-20 bg-pink-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-shopping-bag text-pink-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Zalando</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-opacity-20 bg-pink-500 rounded-full text-xs font-semibold">E-commerce</span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mb-3">Zalando desarrolló su propio modelo "Radical Agility" basado en Spotify, enfocado en tres pilares: autonomía, dominio y propósito. Organizaron equipos pequeños y autosuficientes en torno a microservicios.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">3.5x</p>
+                            <p class="text-xs text-gray-400">Aumento de despliegues</p>
+                        </div>
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">40%</p>
+                            <p class="text-xs text-gray-400">Mejora en contratación</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-opacity-10 bg-white p-2 rounded text-xs">
+                        <p class="font-semibold mb-1">Adaptación clave:</p>
+                        <p>Enfoque en microservicios como facilitador técnico de la autonomía de los equipos</p>
+                    </div>
+                </div>
+                
+                <!-- Case Study 3: LEGO -->
+                <div class="case-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-opacity-20 bg-yellow-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-cubes text-yellow-400 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">LEGO Group</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-opacity-20 bg-yellow-500 rounded-full text-xs font-semibold">Juguetes/Entretenimiento</span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mb-3">LEGO Digital Solutions hibridó el modelo Spotify con Scrum a escala para desarrollar aplicaciones y experiencias digitales. Mantuvieron Squads pero añadieron Product Area Leads para coordinar dominios.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">65%</p>
+                            <p class="text-xs text-gray-400">Más lanzamientos por año</p>
+                        </div>
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">30%</p>
+                            <p class="text-xs text-gray-400">Reducción en defectos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-opacity-10 bg-white p-2 rounded text-xs">
+                        <p class="font-semibold mb-1">Adaptación clave:</p>
+                        <p>Ceremonias estilo SAFe para sincronización entre diferentes squads y equipos externos</p>
+                    </div>
+                </div>
+                
+                <!-- Case Study 4: Netflix -->
+                <div class="case-card">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-opacity-20 bg-red-900 flex items-center justify-center mr-3">
+                                <i class="fas fa-film text-red-500 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Netflix</h3>
+                        </div>
+                        <span class="px-3 py-1 bg-opacity-20 bg-red-500 rounded-full text-xs font-semibold">Streaming</span>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mb-3">Netflix desarrolló un modelo similar pero enfocado en "alto alineamiento, alta autonomía". No adoptaron los nombres específicos del modelo Spotify pero implementaron equipos similares a Squads con plena autonomía.</p>
+                    
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">+1000</p>
+                            <p class="text-xs text-gray-400">Despliegues diarios</p>
+                        </div>
+                        <div class="metric-highlight">
+                            <p class="text-2xl font-bold green-accent">18%</p>
+                            <p class="text-xs text-gray-400">Mejora en innovación</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-opacity-10 bg-white p-2 rounded text-xs">
+                        <p class="font-semibold mb-1">Adaptación clave:</p>
+                        <p>Modelo de responsabilidad total donde equipos gestionan sus servicios 24/7</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Learnings Section -->
+            <div>
+                <h3 class="text-xl font-bold mb-3 flex items-center">
+                    <i class="fas fa-lightbulb green-accent mr-2"></i>
+                    <span>Aprendizajes clave de las adaptaciones</span>
+                </h3>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="key-learning">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-puzzle-piece green-accent mr-2"></i>
+                            <span>Adaptar, no adoptar</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">Las implementaciones exitosas personalizan el modelo a su contexto específico en lugar de copiarlo exactamente.</p>
+                    </div>
+                    
+                    <div class="key-learning">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-sitemap green-accent mr-2"></i>
+                            <span>Estructuras híbridas</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">La mayoría combina elementos del modelo Spotify con otras metodologías como SAFe, LeSS o Scrum@Scale.</p>
+                    </div>
+                    
+                    <div class="key-learning">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-chart-line green-accent mr-2"></i>
+                            <span>Beneficios cuantificables</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">Las adaptaciones exitosas definen KPIs claros para medir el impacto de la transformación organizacional.</p>
+                    </div>
+                    
+                    <div class="key-learning">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-people-arrows green-accent mr-2"></i>
+                            <span>Cultura sobre estructura</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">El cambio cultural y de mentalidad es más importante que la implementación estructural perfecta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">12/15</div>
+        </div>
+    </div>
+</body>
+</html>

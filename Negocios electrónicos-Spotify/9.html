@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Métricas y KPIs en el Modelo Ágil</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .metric-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .chart-container {
+            position: relative;
+            height: 220px;
+            width: 100%;
+        }
+        .data-point {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        .data-point:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .progress-bar {
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-value {
+            height: 100%;
+            background-color: var(--spotify-green);
+        }
+        .key-insight {
+            background-color: rgba(29, 185, 84, 0.1);
+            border-left: 4px solid var(--spotify-green);
+            padding: 12px;
+            border-radius: 0 6px 6px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Johan Mamani</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Métricas y <span class="green-accent">KPIs</span> en el Modelo Ágil</h2>
+                <p class="text-xl text-gray-300">Midiendo el éxito más allá de la productividad tradicional</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left column: Key metrics & KPIs -->
+                <div class="col-span-7">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-chart-line green-accent mr-2"></i>
+                        <span>Métricas clave de Spotify</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="metric-card">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-rocket green-accent"></i>
+                                </div>
+                                <h4 class="font-bold">Tiempo de entrega</h4>
+                            </div>
+                            <p class="text-sm text-gray-300 mb-2">Tiempo desde la concepción hasta el lanzamiento de una característica</p>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Antes del modelo</span>
+                                <span class="font-semibold text-red-400">45-60 días</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Con modelo Spotify</span>
+                                <span class="font-semibold green-accent">15-21 días</span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-heart green-accent"></i>
+                                </div>
+                                <h4 class="font-bold">Satisfacción del equipo</h4>
+                            </div>
+                            <p class="text-sm text-gray-300 mb-2">Medida a través de encuestas periódicas de engagement</p>
+                            <div class="flex items-center mb-1">
+                                <div class="w-full mr-2">
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 87%"></div>
+                                    </div>
+                                </div>
+                                <span class="font-semibold">87%</span>
+                            </div>
+                            <p class="text-xs text-gray-400">vs. promedio industrial de 71%</p>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-code-branch green-accent"></i>
+                                </div>
+                                <h4 class="font-bold">Frecuencia de despliegue</h4>
+                            </div>
+                            <p class="text-sm text-gray-300 mb-2">Número de despliegues a producción</p>
+                            <div class="text-center">
+                                <span class="text-3xl font-bold green-accent">+100</span>
+                                <p class="text-xs text-gray-400">Despliegues diarios en promedio</p>
+                            </div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="flex items-center mb-3">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-bug green-accent"></i>
+                                </div>
+                                <h4 class="font-bold">Estabilidad del servicio</h4>
+                            </div>
+                            <p class="text-sm text-gray-300 mb-2">Tiempo medio entre fallos e incidentes</p>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>MTTR</span>
+                                <span class="font-semibold green-accent">< 1 hora</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Disponibilidad</span>
+                                <span class="font-semibold green-accent">99.95%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Insight Box -->
+                    <div class="key-insight mb-4">
+                        <h4 class="font-semibold mb-1">Insight clave:</h4>
+                        <p class="text-sm">Spotify se enfoca en métricas que miden <span class="font-semibold">valor entregado</span> y <span class="font-semibold">salud del equipo</span>, no solo productividad. Han dejado de medir horas trabajadas, líneas de código o número de historias completadas.</p>
+                    </div>
+                    
+                    <!-- OKRs Section -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 flex items-center">
+                            <i class="fas fa-bullseye green-accent mr-2"></i>
+                            <span>Alineación con OKRs</span>
+                        </h4>
+                        
+                        <div class="bg-opacity-10 bg-white p-3 rounded-lg">
+                            <p class="text-sm mb-2">Cada Squad y Tribe define sus propios OKRs (Objectives & Key Results) alineados con los objetivos corporativos:</p>
+                            
+                            <div class="grid grid-cols-2 gap-3 text-sm">
+                                <div class="p-2 bg-opacity-5 bg-white rounded">
+                                    <p class="font-semibold green-accent">Objetivo de ejemplo:</p>
+                                    <p class="text-xs text-gray-300">Mejorar la experiencia de descubrimiento musical</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="flex items-center text-xs">
+                                        <i class="fas fa-check-circle green-accent mr-1"></i>
+                                        <span>+15% en tiempo de escucha diario</span>
+                                    </div>
+                                    <div class="flex items-center text-xs">
+                                        <i class="fas fa-check-circle green-accent mr-1"></i>
+                                        <span>+20% guardado de canciones descubiertas</span>
+                                    </div>
+                                    <div class="flex items-center text-xs">
+                                        <i class="fas fa-check-circle green-accent mr-1"></i>
+                                        <span>-10% tasa de abandono en recomendaciones</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column: Charts and data visualization -->
+                <div class="col-span-5">
+                    <!-- Feature delivery trend -->
+                    <h3 class="text-xl font-bold mb-3">Evolución de velocidad de entrega</h3>
+                    <div class="metric-card mb-5">
+                        <div class="chart-container">
+                            <canvas id="deliveryTrendChart"></canvas>
+                        </div>
+                        <div class="mt-1 text-center text-xs text-gray-400">
+                            <p>Días promedio para entregar una característica, 2015-2022</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Innovation metrics -->
+                    <h3 class="text-xl font-bold mb-3">Medición de innovación</h3>
+                    <div class="metric-card">
+                        <p class="text-sm text-gray-300 mb-3">Spotify mide la innovación a través de diferentes indicadores:</p>
+                        
+                        <div class="space-y-3">
+                            <div class="data-point">
+                                <div class="w-10 h-10 rounded-full bg-opacity-10 bg-white flex items-center justify-center mr-3">
+                                    <i class="fas fa-lightbulb text-yellow-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between mb-1">
+                                        <p class="font-semibold text-sm">Ideas generadas en Hack Days</p>
+                                        <p class="text-sm green-accent">325+</p>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="data-point">
+                                <div class="w-10 h-10 rounded-full bg-opacity-10 bg-white flex items-center justify-center mr-3">
+                                    <i class="fas fa-flask text-purple-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between mb-1">
+                                        <p class="font-semibold text-sm">Pruebas A/B activas</p>
+                                        <p class="text-sm green-accent">250+</p>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="data-point">
+                                <div class="w-10 h-10 rounded-full bg-opacity-10 bg-white flex items-center justify-center mr-3">
+                                    <i class="fas fa-rocket text-blue-400"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex justify-between mb-1">
+                                        <p class="font-semibold text-sm">Proyectos de Guild implementados</p>
+                                        <p class="text-sm green-accent">42</p>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-value" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-opacity-10 bg-white p-3 rounded text-sm">
+                            <p><i class="fas fa-info-circle mr-1 green-accent"></i> Cada Squad dedica al menos el 10% de su tiempo a experimentación e innovación libre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">9/15</div>
+        </div>
+    </div>
+
+    <script>
+        // Chart for delivery trend
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('deliveryTrendChart').getContext('2d');
+            
+            const deliveryTrendChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+                    datasets: [{
+                        label: 'Días para entrega',
+                        data: [42, 37, 30, 26, 22, 19, 16, 15],
+                        backgroundColor: 'rgba(29, 185, 84, 0.1)',
+                        borderColor: 'rgba(29, 185, 84, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(29, 185, 84, 1)',
+                        pointRadius: 4,
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 50,
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

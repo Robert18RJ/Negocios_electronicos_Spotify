@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Gestión de Equipos con Agile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .org-diagram {
+            position: relative;
+            margin: 0 auto;
+        }
+        .org-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .org-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+        }
+        .tribe-box {
+            background-color: rgba(29, 185, 84, 0.1);
+            border: 1px solid var(--spotify-green);
+        }
+        .connector {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+        }
+        .vertical-connector {
+            width: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .horizontal-connector {
+            height: 2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .info-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 3px solid var(--spotify-green);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Raúl Esquivel</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">¿Qué es el <span class="green-accent">Modelo Spotify</span>?</h2>
+                <p class="text-xl text-gray-300">Squads y Tribes, la base de la organización ágil</p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Left column: Content explanation -->
+                <div>
+                    <div class="info-card">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-users green-accent mr-2"></i>
+                            <span>Squad</span>
+                        </h3>
+                        <p class="text-gray-300 mb-2">Equipo pequeño y autónomo (5-9 personas) con un objetivo común:</p>
+                        <ul class="text-gray-300 space-y-1 pl-6 list-disc">
+                            <li>Multidisciplinario (desarrolladores, diseñadores, testers...)</li>
+                            <li>Auto-organizados y orientados a valor</li>
+                            <li>Trabajan en una característica o componente específico</li>
+                            <li>Autonomía total sobre cómo trabajar y qué construir</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-layer-group green-accent mr-2"></i>
+                            <span>Tribe</span>
+                        </h3>
+                        <p class="text-gray-300 mb-2">Colección de Squads (50-150 personas) que trabajan en áreas relacionadas:</p>
+                        <ul class="text-gray-300 space-y-1 pl-6 list-disc">
+                            <li>Liderada por un Tribe Lead que define la misión</li>
+                            <li>Autonomía operativa como una mini-startup</li>
+                            <li>Enfocada en un área específica del producto (ej. UX, Mobile)</li>
+                            <li>Limita su tamaño para mantener la colaboración efectiva</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-card">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <i class="fas fa-user-tie green-accent mr-2"></i>
+                            <span>Roles típicos</span>
+                        </h3>
+                        <div class="flex space-x-4">
+                            <div class="flex-1 bg-opacity-10 bg-white p-3 rounded-lg">
+                                <p class="font-semibold green-accent mb-1">Product Owner</p>
+                                <p class="text-sm text-gray-300">Prioriza el backlog y asegura la entrega de valor al usuario</p>
+                            </div>
+                            <div class="flex-1 bg-opacity-10 bg-white p-3 rounded-lg">
+                                <p class="font-semibold green-accent mb-1">Agile Coach</p>
+                                <p class="text-sm text-gray-300">Facilita las prácticas ágiles y elimina impedimentos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right column: Visual diagram -->
+                <div class="flex items-center justify-center">
+                    <div class="org-diagram w-full">
+                        <!-- Tribe container -->
+                        <div class="tribe-box p-6 rounded-xl mb-8 relative">
+                            <div class="text-center mb-4">
+                                <span class="px-4 py-1 bg-opacity-20 green-bg rounded-full text-sm font-semibold">TRIBE: MUSIC EXPERIENCE</span>
+                            </div>
+                            
+                            <!-- Squads Grid -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- Squad 1 -->
+                                <div class="org-box">
+                                    <div class="mb-2 flex justify-between items-center">
+                                        <span class="font-bold">Squad: Discovery</span>
+                                        <span class="px-2 py-1 bg-opacity-15 green-bg rounded-full text-xs">5-9 personas</span>
+                                    </div>
+                                    <div class="text-sm text-gray-300">
+                                        <p class="mb-2">Recomendaciones personalizadas</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">Dev</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">UX</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">Data</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Squad 2 -->
+                                <div class="org-box">
+                                    <div class="mb-2 flex justify-between items-center">
+                                        <span class="font-bold">Squad: Player</span>
+                                        <span class="px-2 py-1 bg-opacity-15 green-bg rounded-full text-xs">5-9 personas</span>
+                                    </div>
+                                    <div class="text-sm text-gray-300">
+                                        <p class="mb-2">Experiencia de reproducción</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">Dev</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">UX</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">QA</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Squad 3 -->
+                                <div class="org-box">
+                                    <div class="mb-2 flex justify-between items-center">
+                                        <span class="font-bold">Squad: Social</span>
+                                        <span class="px-2 py-1 bg-opacity-15 green-bg rounded-full text-xs">5-9 personas</span>
+                                    </div>
+                                    <div class="text-sm text-gray-300">
+                                        <p class="mb-2">Funciones sociales y sharing</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">Dev</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">UX</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">QA</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Squad 4 -->
+                                <div class="org-box">
+                                    <div class="mb-2 flex justify-between items-center">
+                                        <span class="font-bold">Squad: Playlists</span>
+                                        <span class="px-2 py-1 bg-opacity-15 green-bg rounded-full text-xs">5-9 personas</span>
+                                    </div>
+                                    <div class="text-sm text-gray-300">
+                                        <p class="mb-2">Gestión de listas y colecciones</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">Dev</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">UX</span>
+                                            <span class="px-2 bg-opacity-10 bg-white rounded-full text-xs">QA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 text-sm text-center text-gray-400">
+                                <p><i class="fas fa-info-circle mr-1"></i> Cada Squad tiene un Product Owner y acceso a un Agile Coach</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Scrum relationship -->
+                        <div class="bg-opacity-10 bg-white p-4 rounded-lg">
+                            <h4 class="text-lg font-semibold mb-2">Relación con Scrum</h4>
+                            <div class="grid grid-cols-3 gap-2 text-sm">
+                                <div class="p-2 bg-opacity-5 bg-white rounded">
+                                    <i class="fas fa-sync-alt green-accent"></i>
+                                    <p>Sprints</p>
+                                </div>
+                                <div class="p-2 bg-opacity-5 bg-white rounded">
+                                    <i class="fas fa-history green-accent"></i>
+                                    <p>Retrospectivas</p>
+                                </div>
+                                <div class="p-2 bg-opacity-5 bg-white rounded">
+                                    <i class="fas fa-users green-accent"></i>
+                                    <p>Daily Stand-ups</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">2/15</div>
+        </div>
+    </div>
+</body>
+</html>

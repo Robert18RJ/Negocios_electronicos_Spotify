@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Cómo trabajan los equipos en la práctica</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .tool-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+        }
+        .workflow-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .workflow-connector {
+            position: relative;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .workflow-connector::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--spotify-green);
+        }
+        .workflow-connector::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--spotify-green);
+        }
+        .ceremony-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ceremony-card:hover {
+            background-color: rgba(29, 185, 84, 0.08);
+            border-color: var(--spotify-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Johan Mamani</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Cómo trabajan los equipos en la <span class="green-accent">práctica</span></h2>
+                <p class="text-xl text-gray-300">Flujos de trabajo, herramientas y ceremonias</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-6 mb-8">
+                <!-- Tool Cards Section -->
+                <div class="col-span-1">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-tools green-accent mr-2"></i>
+                        <span>Herramientas reales</span>
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="tool-card">
+                            <div class="flex items-center mb-2">
+                                <i class="fab fa-jira text-blue-400 text-xl mr-2"></i>
+                                <h4 class="font-bold">Jira</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Gestión de tareas, backlog y seguimiento de sprints. Cada Squad organiza su propio tablero kanban.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="flex items-center mb-2">
+                                <i class="fab fa-confluence text-blue-300 text-xl mr-2"></i>
+                                <h4 class="font-bold">Confluence</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Documentación técnica, decisiones de diseño y conocimiento compartido entre Squads y Chapters.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="flex items-center mb-2">
+                                <i class="fab fa-figma text-purple-400 text-xl mr-2"></i>
+                                <h4 class="font-bold">Figma</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Diseño colaborativo donde UX/UI trabaja con desarrolladores en tiempo real durante el sprint.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <div class="flex items-center mb-2">
+                                <i class="fab fa-github text-gray-200 text-xl mr-2"></i>
+                                <h4 class="font-bold">GitHub</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Control de versiones, pull requests y revisión de código entre miembros del Chapter.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Workflow Diagram Section -->
+                <div class="col-span-2">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-project-diagram green-accent mr-2"></i>
+                        <span>Flujo de desarrollo de una nueva función</span>
+                    </h3>
+                    
+                    <div class="bg-opacity-10 bg-white p-4 rounded-lg">
+                        <p class="text-sm text-gray-300 mb-4">Ejemplo: Desarrollo de Discover Weekly</p>
+                        
+                        <!-- Workflow Steps -->
+                        <div class="workflow-box p-3 bg-opacity-20 bg-green-900">
+                            <div class="flex items-center">
+                                <span class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center mr-3">1</span>
+                                <div>
+                                    <h5 class="font-bold">Ideación e Investigación</h5>
+                                    <p class="text-sm text-gray-300">El Squad de Discovery identifica la oportunidad para personalizar playlists semanales</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-connector"></div>
+                        
+                        <div class="workflow-box">
+                            <div class="flex items-center">
+                                <span class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">2</span>
+                                <div>
+                                    <h5 class="font-bold">Definición y Planificación</h5>
+                                    <p class="text-sm text-gray-300">Product Owner prioriza en el backlog, el Squad planifica el sprint</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-connector"></div>
+                        
+                        <div class="workflow-box">
+                            <div class="flex items-center">
+                                <span class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">3</span>
+                                <div>
+                                    <h5 class="font-bold">Diseño y Prototipos</h5>
+                                    <p class="text-sm text-gray-300">UX/UI diseña en Figma, mientras Data Science trabaja en algoritmos de recomendación</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-connector"></div>
+                        
+                        <div class="workflow-box">
+                            <div class="flex items-center">
+                                <span class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">4</span>
+                                <div>
+                                    <h5 class="font-bold">Desarrollo y Testing</h5>
+                                    <p class="text-sm text-gray-300">Implementación incremental con feedback continuo y pruebas automatizadas</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-connector"></div>
+                        
+                        <div class="workflow-box">
+                            <div class="flex items-center">
+                                <span class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center mr-3">5</span>
+                                <div>
+                                    <h5 class="font-bold">Lanzamiento Gradual</h5>
+                                    <p class="text-sm text-gray-300">A/B testing con grupos de usuarios antes del lanzamiento global</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Ceremonies Section -->
+                    <div class="mt-6">
+                        <h3 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-calendar-check green-accent mr-2"></i>
+                            <span>Ceremonias adaptadas</span>
+                        </h3>
+                        
+                        <div class="grid grid-cols-4 gap-3">
+                            <div class="ceremony-card">
+                                <div class="text-center">
+                                    <i class="fas fa-sync-alt green-accent text-xl mb-2"></i>
+                                    <h5 class="font-bold text-sm">Daily Standup</h5>
+                                    <p class="text-xs text-gray-400">15 min, enfoque en objetivos, no status</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ceremony-card">
+                                <div class="text-center">
+                                    <i class="fas fa-tasks green-accent text-xl mb-2"></i>
+                                    <h5 class="font-bold text-sm">Demo Fridays</h5>
+                                    <p class="text-xs text-gray-400">Demos semanales de avances ante la Tribe</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ceremony-card">
+                                <div class="text-center">
+                                    <i class="fas fa-search green-accent text-xl mb-2"></i>
+                                    <h5 class="font-bold text-sm">Retrospectivas</h5>
+                                    <p class="text-xs text-gray-400">Auto-crítica y mejora continua</p>
+                                </div>
+                            </div>
+                            
+                            <div class="ceremony-card">
+                                <div class="text-center">
+                                    <i class="fas fa-flask green-accent text-xl mb-2"></i>
+                                    <h5 class="font-bold text-sm">Hack Days</h5>
+                                    <p class="text-xs text-gray-400">Tiempo para innovación libre</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autonomy + Alignment Section -->
+            <div class="bg-opacity-10 bg-white p-5 rounded-lg">
+                <h3 class="text-xl font-bold mb-3">Balance clave: Autonomía + Alineación</h3>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 green-accent">Autonomía</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Squads deciden cómo resolver problemas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Libertad para elegir tecnologías y metodologías</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Responsabilidad end-to-end y propiedad del código</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-2 green-accent">Alineación</h4>
+                        <ul class="space-y-1 text-sm">
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Objetivos de negocio comunes (OKRs)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Chapters garantizan coherencia técnica</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right green-accent mt-1 mr-2 text-xs"></i>
+                                <span>Product Owners alineados con la estrategia</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-3 text-center text-sm text-gray-400">
+                    <p>"Sé alineado en el QUÉ, autónomo en el CÓMO" - Principio clave del modelo Spotify</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">4/15</div>
+        </div>
+    </div>
+</body>
+</html>

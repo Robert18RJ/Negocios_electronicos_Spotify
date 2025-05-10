@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Evolución del Modelo Spotify</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .evolution-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .evolution-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--spotify-green);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--spotify-green);
+            left: -5px;
+            top: 6px;
+        }
+        .insight-box {
+            background-color: rgba(29, 185, 84, 0.1);
+            border-left: 4px solid var(--spotify-green);
+            padding: 12px;
+            border-radius: 0 6px 6px 0;
+        }
+        .quote-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 16px;
+            font-style: italic;
+            position: relative;
+        }
+        .quote-box::before {
+            content: '\201C';
+            font-size: 60px;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.2);
+            position: absolute;
+            left: 10px;
+            top: 5px;
+        }
+        .company-item {
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .company-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Robert Dueñas</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Evolución del <span class="green-accent">Modelo Spotify</span></h2>
+                <p class="text-xl text-gray-300">Cómo ha cambiado a lo largo del tiempo y su influencia en la industria</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left column: Timeline of evolution -->
+                <div class="col-span-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-history green-accent mr-2"></i>
+                        <span>Línea de tiempo</span>
+                    </h3>
+                    
+                    <div class="timeline-item">
+                        <div class="mb-1">
+                            <span class="text-sm bg-opacity-20 bg-white px-2 py-1 rounded">2011-2012</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-1">Concepción inicial</h4>
+                        <p class="text-sm text-gray-300">Henrik Kniberg y otros coaches ágiles formalizan la estructura de Squads y Tribes en respuesta al rápido crecimiento de Spotify.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="mb-1">
+                            <span class="text-sm bg-opacity-20 bg-white px-2 py-1 rounded">2013-2014</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-1">Publicación y popularidad</h4>
+                        <p class="text-sm text-gray-300">Artículos y videos sobre el modelo se publican, generando interés en la comunidad tecnológica global.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="mb-1">
+                            <span class="text-sm bg-opacity-20 bg-white px-2 py-1 rounded">2015-2017</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-1">Adaptación y refinamiento</h4>
+                        <p class="text-sm text-gray-300">Spotify ajusta el modelo para manejar dependencias complejas y fortalecer la alineación entre equipos autónomos.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="mb-1">
+                            <span class="text-sm bg-opacity-20 green-bg px-2 py-1 rounded font-semibold">2018-Presente</span>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-1">Evolución continua</h4>
+                        <p class="text-sm text-gray-300">El modelo evoluciona hacia un enfoque más flexible, manteniendo los principios pero adaptando las estructuras a las necesidades cambiantes.</p>
+                    </div>
+                    
+                    <!-- Key Insight Box -->
+                    <div class="insight-box mt-4">
+                        <h4 class="font-semibold mb-1">Insight clave:</h4>
+                        <p class="text-sm">Spotify no sigue rígidamente su propio "modelo Spotify". Han adaptado continuamente su estructura organizativa, manteniendo los principios pero modificando la implementación según las necesidades del negocio.</p>
+                    </div>
+                </div>
+                
+                <!-- Right column: Industry impact and quotes -->
+                <div class="col-span-6">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-globe-americas green-accent mr-2"></i>
+                        <span>Impacto en la industria</span>
+                    </h3>
+                    
+                    <div class="quote-box mb-4 pl-10">
+                        <p class="text-gray-300 text-sm">"El modelo Spotify nunca ha sido un modelo prescriptivo. Lo compartimos como una instantánea de nuestro viaje, no como un destino al que todos deberían llegar."</p>
+                        <p class="text-right text-xs font-semibold mt-2">- Anders Ivarsson, Co-creador del modelo</p>
+                    </div>
+                    
+                    <div class="evolution-card mb-4">
+                        <h4 class="font-semibold mb-3 flex items-center">
+                            <i class="fas fa-exchange-alt green-accent mr-2"></i>
+                            <span>Cambios principales en el tiempo</span>
+                        </h4>
+                        
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right green-accent mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-semibold">Menos énfasis en nombres de roles</p>
+                                    <p class="text-xs text-gray-300">Mayor enfoque en competencias y habilidades que en títulos específicos</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right green-accent mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-semibold">Coordinación inter-tribu fortalecida</p>
+                                    <p class="text-xs text-gray-300">Nuevos mecanismos para gestionar dependencias entre tribus</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right green-accent mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-semibold">Alineación más estructurada</p>
+                                    <p class="text-xs text-gray-300">Sistema de OKRs más robusto para mantener la dirección estratégica</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-arrow-right green-accent mt-1 mr-2"></i>
+                                <div>
+                                    <p class="font-semibold">Guilds con mayor formalización</p>
+                                    <p class="text-xs text-gray-300">Más recursos asignados a comunidades de prácticas transversales</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Companies that adapted the model in their own way -->
+                    <div>
+                        <h4 class="font-semibold mb-3">Adaptaciones en otras empresas:</h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="company-item">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-opacity-20 bg-blue-900 flex items-center justify-center mr-2">
+                                        <i class="fas fa-university text-blue-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">ING Bank</p>
+                                        <p class="text-xs text-gray-400">Adaptación regulada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="company-item">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-2">
+                                        <i class="fas fa-shopping-cart green-accent"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Zalando</p>
+                                        <p class="text-xs text-gray-400">Radical Agility</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="company-item">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-opacity-20 bg-red-900 flex items-center justify-center mr-2">
+                                        <i class="fas fa-photo-video text-red-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">Netflix</p>
+                                        <p class="text-xs text-gray-400">Alto alineamiento, alta autonomía</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="company-item">
+                                <div class="flex items-center">
+                                    <div class="w-8 h-8 rounded-full bg-opacity-20 bg-yellow-900 flex items-center justify-center mr-2">
+                                        <i class="fas fa-cubes text-yellow-400"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-sm">LEGO</p>
+                                        <p class="text-xs text-gray-400">Scaled Agile adaptado</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Legacy impact -->
+                    <div class="mt-4 bg-opacity-10 bg-white p-3 rounded-lg">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-award green-accent mr-2"></i>
+                            <span>Legado del modelo</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">El mayor impacto del modelo Spotify no ha sido en su estructura específica, sino en inspirar a las organizaciones a pensar creativamente sobre cómo estructurarse para mantener la agilidad a escala mientras preservan su propia cultura.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">11/15</div>
+        </div>
+    </div>
+</body>
+</html>

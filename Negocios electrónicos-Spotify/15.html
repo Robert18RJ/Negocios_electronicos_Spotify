@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Gestión de Equipos con Agile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .team-member {
+            transition: all 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .team-member:hover {
+            transform: translateY(-8px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .thank-you-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(29, 185, 84, 0.2) 0%, rgba(29, 185, 84, 0.05) 100%);
+        }
+        .thank-you-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(29, 185, 84, 0.2) 0%, transparent 60%);
+            opacity: 0.3;
+            z-index: 0;
+            animation: pulse 10s infinite linear;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+        }
+        .takeaway-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            border-left: 3px solid var(--spotify-green);
+            margin-bottom: 10px;
+        }
+        .takeaway-item:hover {
+            background-color: rgba(29, 185, 84, 0.1);
+            transform: translateX(5px);
+        }
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            background-color: var(--spotify-green);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo -->
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="flex space-x-3">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin-in text-white"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-github text-white"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Thank You Section -->
+            <div class="thank-you-wrapper p-8 mb-8 relative">
+                <div class="relative z-10">
+                    <h2 class="text-5xl font-bold mb-4 text-center">¡Gracias por su <span class="green-accent">atención</span>!</h2>
+                    <p class="text-xl text-center text-gray-300">Ha sido un placer compartir con ustedes el modelo de gestión ágil de Spotify</p>
+                    <div class="flex justify-center mt-6">
+                        <a href="#" class="px-8 py-3 bg-green-500 text-white font-bold rounded-full hover:bg-green-600 transition duration-300 flex items-center">
+                            <i class="fas fa-download mr-2"></i>
+                            Descargar presentación
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left column: Key Takeaways -->
+                <div class="col-span-7">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-star green-accent mr-2"></i>
+                        <span>Puntos clave a recordar</span>
+                    </h3>
+                    
+                    <div class="space-y-3">
+                        <div class="takeaway-item">
+                            <p class="font-semibold">El modelo Spotify se basa en <span class="green-accent">equipos autónomos</span> (Squads) que mantienen la alineación estratégica</p>
+                        </div>
+                        
+                        <div class="takeaway-item">
+                            <p class="font-semibold">Las comunidades de práctica (Chapters y Guilds) facilitan el <span class="green-accent">intercambio de conocimiento</span> y mantienen la coherencia técnica</p>
+                        </div>
+                        
+                        <div class="takeaway-item">
+                            <p class="font-semibold">Cada organización debe <span class="green-accent">adaptar</span> el modelo a su contexto y no simplemente copiarlo</p>
+                        </div>
+                        
+                        <div class="takeaway-item">
+                            <p class="font-semibold">La <span class="green-accent">cultura</span> es más importante que la estructura organizacional específica</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-opacity-10 bg-white p-4 rounded-lg text-center">
+                        <p class="text-lg italic">"Ser ágil es más importante que usar Agile."</p>
+                        <p class="text-sm text-gray-400 mt-1">— Henrik Kniberg, Ex-Coach Ágil en Spotify</p>
+                    </div>
+                </div>
+                
+                <!-- Right column: Team Members -->
+                <div class="col-span-5">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-users green-accent mr-2"></i>
+                        <span>Equipo expositor</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="team-member">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 h-20 flex items-center justify-center">
+                                <i class="fas fa-user-circle text-4xl text-gray-400"></i>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-semibold">Frans Vargas</h4>
+                                <p class="text-xs text-gray-400">Introducción y Preparación</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 h-20 flex items-center justify-center">
+                                <i class="fas fa-user-circle text-4xl text-gray-400"></i>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-semibold">Raúl Esquivel</h4>
+                                <p class="text-xs text-gray-400">Modelo Spotify y Cultura</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 h-20 flex items-center justify-center">
+                                <i class="fas fa-user-circle text-4xl text-gray-400"></i>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-semibold">Johan Mamani</h4>
+                                <p class="text-xs text-gray-400">Flujos de Trabajo y Métricas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 h-20 flex items-center justify-center">
+                                <i class="fas fa-user-circle text-4xl text-gray-400"></i>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-semibold">Camila Rodríguez</h4>
+                                <p class="text-xs text-gray-400">Ventajas y Futuro del Modelo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member col-span-2">
+                            <div class="bg-gradient-to-b from-gray-800 to-gray-900 h-20 flex items-center justify-center">
+                                <i class="fas fa-user-circle text-4xl text-gray-400"></i>
+                            </div>
+                            <div class="p-3 text-center">
+                                <h4 class="font-semibold">Robert Dueñas</h4>
+                                <p class="text-xs text-gray-400">Chapters y Guilds, Conclusiones</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center bg-opacity-20 green-bg p-3 rounded-lg">
+                        <p class="text-sm">¿Preguntas o comentarios?</p>
+                        <p class="text-sm font-semibold green-accent">contacto@ejemplo.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">15/15</div>
+        </div>
+    </div>
+</body>
+</html>

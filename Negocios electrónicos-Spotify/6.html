@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Conclusión y Visión a Futuro</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .conclusion-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .conclusion-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .video-container {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 230px;
+        }
+        .consideration-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .consideration-item:hover {
+            background-color: rgba(29, 185, 84, 0.08);
+            transform: translateX(5px);
+        }
+        .watch-button {
+            background-color: var(--spotify-green);
+            color: white;
+            font-weight: bold;
+            padding: 10px 24px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .watch-button:hover {
+            transform: scale(1.05);
+            background-color: #1ed760;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Robert Dueñas</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Conclusión y <span class="green-accent">Visión a Futuro</span></h2>
+                <p class="text-xl text-gray-300">Adaptando el modelo Spotify a tu organización</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left Column: Spotify as a Reference and Adaptability -->
+                <div class="col-span-7">
+                    <!-- Spotify as Reference -->
+                    <div class="conclusion-card mb-6">
+                        <h3 class="text-2xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-star green-accent mr-2"></i>
+                            <span>Spotify como referente en gestión ágil</span>
+                        </h3>
+                        <p class="text-gray-300 mb-4">El modelo de Spotify ha revolucionado cómo pensamos sobre la organización de equipos de desarrollo a escala, demostrando que es posible:</p>
+                        <ul class="space-y-2 pl-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                                <span>Mantener la agilidad mientras se escala (300+ equipos de producto)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                                <span>Equilibrar autonomía y alineación estratégica</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                                <span>Fomentar la innovación a través de estructuras flexibles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                                <span>Crear una cultura de aprendizaje continuo e intercambio</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Adaptability to Other Organizations -->
+                    <div class="conclusion-card mb-6">
+                        <h3 class="text-xl font-bold mb-3 flex items-center">
+                            <i class="fas fa-building green-accent mr-2"></i>
+                            <span>¿Puede aplicarse en otras organizaciones?</span>
+                        </h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-3 bg-opacity-10 bg-white rounded-lg">
+                                <h4 class="font-semibold text-center mb-2 green-accent">Contextos favorables</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right green-accent mt-1 mr-1 text-xs"></i>
+                                        <span>Empresas tecnológicas y digitales</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right green-accent mt-1 mr-1 text-xs"></i>
+                                        <span>Productos en constante evolución</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right green-accent mt-1 mr-1 text-xs"></i>
+                                        <span>Cultura que valora la autonomía</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="p-3 bg-opacity-10 bg-white rounded-lg">
+                                <h4 class="font-semibold text-center mb-2 text-red-400">Retos de implementación</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right text-red-400 mt-1 mr-1 text-xs"></i>
+                                        <span>Organizaciones muy jerárquicas</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right text-red-400 mt-1 mr-1 text-xs"></i>
+                                        <span>Entornos altamente regulados</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-chevron-right text-red-400 mt-1 mr-1 text-xs"></i>
+                                        <span>Resistencia cultural al cambio</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Considerations -->
+                    <div class="bg-opacity-10 bg-white p-4 rounded-lg">
+                        <h3 class="text-xl font-bold mb-3">Consideraciones clave para adaptarlo</h3>
+                        <div class="space-y-2">
+                            <div class="consideration-item">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-puzzle-piece green-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Adaptar, no copiar</p>
+                                    <p class="text-sm text-gray-300">Toma los principios, no la estructura exacta</p>
+                                </div>
+                            </div>
+                            <div class="consideration-item">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-seedling green-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Implementación gradual</p>
+                                    <p class="text-sm text-gray-300">Comienza con proyectos piloto, expande progresivamente</p>
+                                </div>
+                            </div>
+                            <div class="consideration-item">
+                                <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3">
+                                    <i class="fas fa-user-shield green-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">Liderazgo comprometido</p>
+                                    <p class="text-sm text-gray-300">El cambio debe ser impulsado y apoyado desde arriba</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Video and Call to Action -->
+                <div class="col-span-5">
+                    <!-- Video Embed -->
+                    <div class="video-container mb-6">
+                        <i class="fab fa-youtube text-red-500 text-5xl mb-4"></i>
+                        <h4 class="text-lg font-semibold mb-4">Spotify Engineering Culture</h4>
+                        <a href="https://www.youtube.com/watch?v=4GK1NDTWbkY" target="_blank" class="watch-button">
+                            <i class="fas fa-play-circle mr-2"></i>
+                            Ver Video
+                        </a>
+                        <p class="text-xs text-gray-400 mt-4 text-center">Video que explica la cultura de ingeniería en Spotify</p>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="conclusion-card">
+                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                            <i class="fas fa-bullhorn green-accent mr-2"></i>
+                            <span>Un llamado a la exploración</span>
+                        </h3>
+                        <div class="p-4 bg-opacity-10 bg-white rounded-lg mb-4">
+                            <p class="italic text-gray-300">"La agilidad no se trata de seguir un framework específico, sino de adoptar un mindset que valora la adaptabilidad, la colaboración y el enfoque en el cliente."</p>
+                        </div>
+                        <p class="text-gray-300 mb-4">Las organizaciones más exitosas del futuro serán aquellas que:</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <i class="fas fa-arrow-right green-accent mr-2"></i>
+                                <span>Experimentan con diferentes estructuras organizativas</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-arrow-right green-accent mr-2"></i>
+                                <span>Ponen a las personas en el centro del diseño</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-arrow-right green-accent mr-2"></i>
+                                <span>Evolucionan continuamente su forma de trabajar</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6 text-center">
+                            <span class="px-6 py-2 bg-opacity-20 green-bg rounded-full text-sm font-semibold">
+                                ¿Cómo podría adaptarse el modelo Spotify en tu contexto?
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">6/15</div>
+        </div>
+    </div>
+</body>
+</html>

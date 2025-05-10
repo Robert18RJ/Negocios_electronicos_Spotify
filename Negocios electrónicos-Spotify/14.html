@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Futuro de la Agilidad Organizacional</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .future-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .future-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .resource-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .resource-item:hover {
+            background-color: rgba(29, 185, 84, 0.08);
+            transform: translateX(5px);
+        }
+        .insight-box {
+            background-color: rgba(29, 185, 84, 0.1);
+            border-left: 4px solid var(--spotify-green);
+            padding: 12px;
+            border-radius: 0 6px 6px 0;
+        }
+        .trend-arrow {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(29, 185, 84, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositora</p>
+                    <p class="font-semibold">Camila Rodríguez Brown</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">El Futuro de la <span class="green-accent">Agilidad Organizacional</span></h2>
+                <p class="text-xl text-gray-300">Tendencias emergentes y recursos para continuar el aprendizaje</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left column: Future Trends -->
+                <div class="col-span-7">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-rocket green-accent mr-2"></i>
+                        <span>Tendencias emergentes post-Spotify</span>
+                    </h3>
+                    
+                    <div class="space-y-4">
+                        <div class="future-card">
+                            <div class="flex">
+                                <div class="trend-arrow">
+                                    <i class="fas fa-network-wired green-accent text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Organizaciones en red</h4>
+                                    <p class="text-sm text-gray-300">Evolución desde las estructuras matriciales hacia redes dinámicas de equipos que se forman y disuelven según las necesidades empresariales.</p>
+                                    <div class="mt-2 flex space-x-2 text-xs">
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Team Topologies</span>
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Network Orgs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="future-card">
+                            <div class="flex">
+                                <div class="trend-arrow">
+                                    <i class="fas fa-brain green-accent text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Decisiones basadas en datos</h4>
+                                    <p class="text-sm text-gray-300">Integración de análisis avanzados e IA para optimizar la colaboración entre equipos, predecir dependencias y mejorar la asignación de recursos.</p>
+                                    <div class="mt-2 flex space-x-2 text-xs">
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">IA Organizacional</span>
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Data-Driven Agility</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="future-card">
+                            <div class="flex">
+                                <div class="trend-arrow">
+                                    <i class="fas fa-globe green-accent text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Equipos distribuidos globalmente</h4>
+                                    <p class="text-sm text-gray-300">Adaptaciones del modelo Spotify para organizaciones con equipos remotos y distribuidos en múltiples zonas horarias y culturas.</p>
+                                    <div class="mt-2 flex space-x-2 text-xs">
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Digital-first Agile</span>
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Asynchronous Collaboration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="future-card">
+                            <div class="flex">
+                                <div class="trend-arrow">
+                                    <i class="fas fa-project-diagram green-accent text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Modelos híbridos personalizados</h4>
+                                    <p class="text-sm text-gray-300">Fusión de elementos del modelo Spotify con otras metodologías como SAFe, Scrum@Scale y sistemas sociotécnicos adaptados a cada contexto organizacional.</p>
+                                    <div class="mt-2 flex space-x-2 text-xs">
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Contextual Agility</span>
+                                        <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Adaptive Frameworks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column: Resources and Learning -->
+                <div class="col-span-5">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-book-open green-accent mr-2"></i>
+                        <span>Recursos para profundizar</span>
+                    </h3>
+                    
+                    <div class="mb-5">
+                        <div class="resource-item">
+                            <div class="w-10 h-10 rounded-full bg-opacity-20 bg-blue-900 flex items-center justify-center mr-3 flex-shrink-0">
+                                <i class="fas fa-book text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Libros recomendados</h4>
+                                <ul class="text-sm text-gray-300 space-y-1">
+                                    <li>"Accelerate" - Nicole Forsgren, Jez Humble</li>
+                                    <li>"Team Topologies" - Matthew Skelton, Manuel Pais</li>
+                                    <li>"Agile Conversations" - Douglas Squirrel, Jeffrey Fredrick</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="w-10 h-10 rounded-full bg-opacity-20 bg-red-900 flex items-center justify-center mr-3 flex-shrink-0">
+                                <i class="fab fa-youtube text-red-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Videos y conferencias</h4>
+                                <ul class="text-sm text-gray-300 space-y-1">
+                                    <li>"Spotify Engineering Culture" (YouTube)</li>
+                                    <li>"Beyond the Spotify Model" - Joakim Sundén</li>
+                                    <li>"Agile at Scale" - Henrik Kniberg</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="resource-item">
+                            <div class="w-10 h-10 rounded-full bg-opacity-20 bg-green-900 flex items-center justify-center mr-3 flex-shrink-0">
+                                <i class="fas fa-users green-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-1">Comunidades y eventos</h4>
+                                <ul class="text-sm text-gray-300 space-y-1">
+                                    <li>Agile Alliance</li>
+                                    <li>DevOps Enterprise Summit</li>
+                                    <li>Comunidades locales de Agile/Lean</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Insight box -->
+                    <div class="insight-box">
+                        <h4 class="font-semibold mb-2">El Futuro es Fluido</h4>
+                        <p class="text-sm text-gray-300">La tendencia más consistente en la evolución del modelo Spotify es alejarse de estructuras rígidas hacia sistemas adaptativos que responden a contextos únicos y cambiantes.</p>
+                        <div class="mt-3 flex space-x-2 justify-center">
+                            <span class="px-4 py-1 rounded-full text-xs font-semibold bg-opacity-20 green-bg">Experimentar</span>
+                            <span class="px-4 py-1 rounded-full text-xs font-semibold bg-opacity-20 green-bg">Adaptar</span>
+                            <span class="px-4 py-1 rounded-full text-xs font-semibold bg-opacity-20 green-bg">Evolucionar</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 bg-opacity-10 bg-white p-4 rounded-lg">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <i class="fas fa-graduation-cap green-accent mr-2"></i>
+                            <span>Próximos pasos en tu aprendizaje</span>
+                        </h4>
+                        <ol class="text-sm text-gray-300 space-y-1 list-decimal pl-5">
+                            <li>Evalúa la cultura actual de tu organización</li>
+                            <li>Identifica qué elementos del modelo Spotify podrían beneficiarte</li>
+                            <li>Comienza con un proyecto piloto pequeño</li>
+                            <li>Aprende, adapta y comparte tu experiencia</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">14/15</div>
+        </div>
+    </div>
+</body>
+</html>

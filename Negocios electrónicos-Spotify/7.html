@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Implementación Práctica del Modelo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .implementation-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .implementation-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .challenge-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+            border-left: 3px solid transparent;
+        }
+        .challenge-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-left-color: var(--spotify-green);
+        }
+        .phase-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(29, 185, 84, 0.2);
+            border: 2px solid var(--spotify-green);
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .phase-connector {
+            width: 100%;
+            height: 2px;
+            background-color: var(--spotify-green);
+            flex: 1;
+            position: relative;
+        }
+        .phase-connector::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-left: 8px solid var(--spotify-green);
+            border-bottom: 5px solid transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Frans Vargas</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Implementación <span class="green-accent">Práctica</span> del Modelo</h2>
+                <p class="text-xl text-gray-300">Hoja de ruta para adoptar el modelo Spotify en tu organización</p>
+            </div>
+
+            <!-- Implementation Phases -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-map-signs green-accent mr-2"></i>
+                    <span>Fases de implementación</span>
+                </h3>
+                
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex flex-col items-center">
+                        <div class="phase-circle">1</div>
+                        <div class="text-center mt-2">
+                            <p class="font-semibold">Evaluación</p>
+                            <p class="text-xs text-gray-400">Análisis organizacional</p>
+                        </div>
+                    </div>
+                    <div class="phase-connector"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="phase-circle">2</div>
+                        <div class="text-center mt-2">
+                            <p class="font-semibold">Diseño</p>
+                            <p class="text-xs text-gray-400">Adaptación del modelo</p>
+                        </div>
+                    </div>
+                    <div class="phase-connector"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="phase-circle">3</div>
+                        <div class="text-center mt-2">
+                            <p class="font-semibold">Piloto</p>
+                            <p class="text-xs text-gray-400">Implementación inicial</p>
+                        </div>
+                    </div>
+                    <div class="phase-connector"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="phase-circle">4</div>
+                        <div class="text-center mt-2">
+                            <p class="font-semibold">Escalamiento</p>
+                            <p class="text-xs text-gray-400">Expansión gradual</p>
+                        </div>
+                    </div>
+                    <div class="phase-connector"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="phase-circle">5</div>
+                        <div class="text-center mt-2">
+                            <p class="font-semibold">Evolución</p>
+                            <p class="text-xs text-gray-400">Mejora continua</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Left Column: Key Challenges -->
+                <div>
+                    <h3 class="text-xl font-bold mb-3 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-yellow-500 mr-2"></i>
+                        <span>Desafíos comunes</span>
+                    </h3>
+                    
+                    <div class="challenge-item">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-users-cog text-red-400 mr-2"></i>
+                            <span>Resistencia al cambio</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">Los mandos medios pueden sentir que pierden autoridad y control en un modelo horizontal.</p>
+                        <div class="mt-1 text-xs bg-opacity-20 bg-green-900 p-1 rounded inline-block">
+                            <i class="fas fa-lightbulb green-accent mr-1"></i>
+                            <span>Involucrarlos como Chapter Leads para transformar su rol</span>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-project-diagram text-red-400 mr-2"></i>
+                            <span>Dependencias técnicas</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">Los equipos autónomos pueden crear soluciones inconsistentes o duplicar esfuerzos.</p>
+                        <div class="mt-1 text-xs bg-opacity-20 bg-green-900 p-1 rounded inline-block">
+                            <i class="fas fa-lightbulb green-accent mr-1"></i>
+                            <span>Establecer Guilds técnicos para compartir estándares y mejores prácticas</span>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <h4 class="font-semibold mb-1 flex items-center">
+                            <i class="fas fa-balance-scale text-red-400 mr-2"></i>
+                            <span>Alineación vs. Autonomía</span>
+                        </h4>
+                        <p class="text-sm text-gray-300">Equilibrar la independencia de los equipos con la dirección estratégica global.</p>
+                        <div class="mt-1 text-xs bg-opacity-20 bg-green-900 p-1 rounded inline-block">
+                            <i class="fas fa-lightbulb green-accent mr-1"></i>
+                            <span>Implementar OKRs para mantener la visión compartida</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Critical Success Factors -->
+                <div>
+                    <h3 class="text-xl font-bold mb-3 flex items-center">
+                        <i class="fas fa-key green-accent mr-2"></i>
+                        <span>Factores críticos de éxito</span>
+                    </h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="implementation-card">
+                            <div class="h-10 flex items-center">
+                                <i class="fas fa-thumbs-up text-xl green-accent"></i>
+                                <h4 class="font-bold ml-2">Cultura abierta</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Fomentar transparencia, experimentación y tolerancia al error controlado.</p>
+                        </div>
+                        
+                        <div class="implementation-card">
+                            <div class="h-10 flex items-center">
+                                <i class="fas fa-graduation-cap text-xl green-accent"></i>
+                                <h4 class="font-bold ml-2">Formación</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Capacitación continua en prácticas ágiles, autonomía y gestión de equipos.</p>
+                        </div>
+                        
+                        <div class="implementation-card">
+                            <div class="h-10 flex items-center">
+                                <i class="fas fa-chart-line text-xl green-accent"></i>
+                                <h4 class="font-bold ml-2">Métricas claras</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Indicadores que midan valor entregado, no solo actividad o productividad.</p>
+                        </div>
+                        
+                        <div class="implementation-card">
+                            <div class="h-10 flex items-center">
+                                <i class="fas fa-hands-helping text-xl green-accent"></i>
+                                <h4 class="font-bold ml-2">Apoyo ejecutivo</h4>
+                            </div>
+                            <p class="text-sm text-gray-300">Patrocinio visible y sostenido de la alta dirección durante la transición.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Case Study Box -->
+                    <div class="mt-4 bg-opacity-10 bg-white p-4 rounded-lg border-l-4 green-border">
+                        <h4 class="font-semibold mb-2">Caso de estudio: ING Bank</h4>
+                        <p class="text-sm text-gray-300">El banco holandés adaptó el modelo Spotify creando "Squads" organizados en "Tribes", logrando:</p>
+                        <div class="grid grid-cols-3 gap-2 mt-2">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold green-accent">56%</p>
+                                <p class="text-xs text-gray-400">Reducción time-to-market</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold green-accent">35%</p>
+                                <p class="text-xs text-gray-400">Incremento de engagement</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold green-accent">3.2x</p>
+                                <p class="text-xs text-gray-400">Más iniciativas innovadoras</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">7/15</div>
+        </div>
+    </div>
+</body>
+</html>

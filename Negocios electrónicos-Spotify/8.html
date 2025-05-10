@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Cultura Organizacional en el Modelo Ágil</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-border {
+            border-color: var(--spotify-green);
+        }
+        .green-bg {
+            background-color: var(--spotify-green);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .culture-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: 100%;
+        }
+        .culture-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(29, 185, 84, 0.1);
+            border-color: var(--spotify-green);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+        .comparison-table th {
+            font-weight: bold;
+            color: var(--spotify-green);
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .checklist-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .quote-box {
+            background-color: rgba(29, 185, 84, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            font-style: italic;
+            position: relative;
+        }
+        .quote-box::before {
+            content: '\201C';
+            font-size: 60px;
+            line-height: 1;
+            color: rgba(29, 185, 84, 0.3);
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo and speaker info -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="flex items-center">
+                    <svg class="w-10 h-10" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-2xl font-bold ml-3">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Raúl Esquivel</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-6">
+                <h2 class="text-4xl font-bold mb-2">Cultura <span class="green-accent">Organizacional</span></h2>
+                <p class="text-xl text-gray-300">El verdadero motor del modelo Spotify</p>
+            </div>
+
+            <div class="grid grid-cols-12 gap-6">
+                <!-- Left column: Cultural pillars -->
+                <div class="col-span-5">
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-landmark green-accent mr-2"></i>
+                        <span>Pilares culturales</span>
+                    </h3>
+                    
+                    <div class="grid grid-rows-3 gap-4">
+                        <div class="culture-card">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-handshake green-accent mr-2"></i>
+                                <span>Confianza y transparencia</span>
+                            </h4>
+                            <p class="text-sm text-gray-300">Compartir información abiertamente, incluso cuando es incómodo. La confianza está en el centro del modelo descentralizado de Spotify.</p>
+                            <div class="mt-2 bg-opacity-20 bg-green-900 p-2 rounded">
+                                <p class="text-xs"><i class="fas fa-quote-left mr-1 green-accent"></i> "Somos rápidos porque confiamos unos en otros" - Henrik Kniberg</p>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-rocket green-accent mr-2"></i>
+                                <span>Aprendizaje continuo</span>
+                            </h4>
+                            <p class="text-sm text-gray-300">La experimentación y el fracaso controlado son celebrados como oportunidades de aprendizaje. Cada equipo realiza retrospectivas para mejorar constantemente.</p>
+                            <div class="mt-2 flex space-x-2 text-xs">
+                                <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Hack Days</span>
+                                <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Guild Talks</span>
+                                <span class="px-2 py-1 bg-opacity-20 bg-gray-500 rounded">Unconference</span>
+                            </div>
+                        </div>
+                        
+                        <div class="culture-card">
+                            <h4 class="text-lg font-bold mb-2 flex items-center">
+                                <i class="fas fa-balance-scale green-accent mr-2"></i>
+                                <span>Autonomía con propósito</span>
+                            </h4>
+                            <p class="text-sm text-gray-300">La libertad de los equipos está alineada con objetivos claros. No es solo "hacer lo que quieras", sino "crear lo mejor para el usuario".</p>
+                            <div class="mt-2 bg-opacity-10 bg-white rounded p-2">
+                                <p class="text-xs">Cada Squad tiene autonomía en cómo implementar, pero todos están alineados en la misma dirección estratégica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right column: Cultural transformation -->
+                <div class="col-span-7">
+                    <!-- Cultural comparison table -->
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-exchange-alt green-accent mr-2"></i>
+                        <span>Transformación cultural</span>
+                    </h3>
+                    
+                    <div class="bg-opacity-10 bg-white p-4 rounded-lg mb-6">
+                        <table class="comparison-table w-full text-sm">
+                            <thead>
+                                <tr>
+                                    <th>Cultura Tradicional</th>
+                                    <th class="green-accent">Cultura Spotify</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gestión a través de jerarquía y control</td>
+                                    <td>Liderazgo a través de visión y coaching</td>
+                                </tr>
+                                <tr>
+                                    <td>Perfeccionismo y miedo al fracaso</td>
+                                    <td>Experimentación y mejora continua</td>
+                                </tr>
+                                <tr>
+                                    <td>Reuniones y aprobaciones extensas</td>
+                                    <td>Decisiones rápidas más cerca del problema</td>
+                                </tr>
+                                <tr>
+                                    <td>Silos de información y especialización</td>
+                                    <td>Conocimiento compartido y T-shaped skills</td>
+                                </tr>
+                                <tr>
+                                    <td>Valorado por horas trabajadas</td>
+                                    <td>Valorado por impacto y valor entregado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Quote box for emphasis -->
+                    <div class="quote-box mb-6 pl-10">
+                        <p class="text-gray-300">"La cultura no es solo lo que dices, es lo que haces. En Spotify, construimos intencionalmente un entorno donde los equipos autónomos puedan prosperar y colaborar."</p>
+                        <p class="text-right text-sm font-semibold mt-2">- Daniel Ek, CEO de Spotify</p>
+                    </div>
+                    
+                    <!-- Cultural transformation checklist -->
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3">Acciones para transformar la cultura:</h4>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <p class="font-semibold">Redefinir el liderazgo</p>
+                                    <p class="text-xs text-gray-300">Pasar de jefes a coaches y facilitadores</p>
+                                </div>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <p class="font-semibold">Celebrar el aprendizaje</p>
+                                    <p class="text-xs text-gray-300">Crear espacios seguros para compartir fracasos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <p class="font-semibold">Implementar OKRs</p>
+                                    <p class="text-xs text-gray-300">Objetivos claros que alinean autonomía</p>
+                                </div>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <i class="fas fa-check-circle green-accent mt-1 mr-2 text-lg"></i>
+                                <div>
+                                    <p class="font-semibold">Promover transparencia</p>
+                                    <p class="text-xs text-gray-300">Información accesible para todos</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-opacity-20 green-bg p-3 rounded-lg flex items-center">
+                            <i class="fas fa-lightbulb text-xl mr-3 green-accent"></i>
+                            <p class="text-sm">La transición cultural es un proceso gradual, no un evento. Reserva tiempo específico para actividades que refuercen los nuevos valores.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">8/15</div>
+        </div>
+    </div>
+</body>
+</html>

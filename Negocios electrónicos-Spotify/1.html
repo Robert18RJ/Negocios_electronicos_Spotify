@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Gestión de Equipos con Agile</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #191414;
+            --spotify-dark-gray: #2D2D2D;
+            --spotify-light-gray: #B3B3B3;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--spotify-black);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .spotify-gradient {
+            background: linear-gradient(135deg, var(--spotify-black) 0%, #2d2d2d 100%);
+        }
+        .green-accent {
+            color: var(--spotify-green);
+        }
+        .green-btn {
+            background-color: var(--spotify-green);
+            transition: all 0.3s ease;
+        }
+        .green-btn:hover {
+            background-color: #1ed760;
+            transform: scale(1.05);
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: var(--spotify-light-gray);
+        }
+        .speaker-badge {
+            background-color: rgba(29, 185, 84, 0.15);
+            border-left: 3px solid var(--spotify-green);
+        }
+        .hierarchy-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .hierarchy-box {
+            border-radius: 8px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container spotify-gradient flex flex-col">
+        <div class="px-16 py-12 flex-grow">
+            <!-- Header with Spotify logo -->
+            <div class="flex justify-between items-center mb-12">
+                <div class="flex items-center">
+                    <svg class="w-12 h-12" viewBox="0 0 168 168" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#1DB954" d="M83.996 0C37.747 0 0 37.747 0 84c0 46.251 37.747 84 83.996 84 46.254 0 84.004-37.749 84.004-84 0-46.253-37.75-84-84.004-84zm38.472 120.419c-1.505 2.467-4.718 3.24-7.177 1.737-19.665-12.019-44.417-14.734-73.567-8.075-2.809.644-5.609-1.117-6.249-3.925-.643-2.809 1.11-5.609 3.926-6.249 31.9-7.293 59.263-4.154 81.336 9.334 2.46 1.51 3.24 4.72 1.731 7.178zm10.27-22.869c-1.89 3.075-5.91 4.042-8.981 2.152-22.505-13.834-56.822-17.841-83.447-9.759-3.453 1.043-7.1-.903-8.148-4.35-1.04-3.453.907-7.093 4.354-8.143 30.413-9.228 68.221-4.758 94.071 11.127 3.07 1.89 4.04 5.91 2.151 8.973zm.88-23.744c-26.994-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.734 2.739z"/>
+                    </svg>
+                    <h1 class="text-4xl font-bold ml-4">Spotify</h1>
+                </div>
+                <div class="speaker-badge px-4 py-2 rounded-lg">
+                    <p class="text-sm text-gray-300">Expositor</p>
+                    <p class="font-semibold">Frans Vargas</p>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mb-10">
+                <h2 class="text-5xl font-bold mb-4">Gestión de Equipos con <span class="green-accent">Agile</span></h2>
+                <p class="text-xl text-gray-300 mb-12">Un modelo innovador de gestión ágil en la industria tecnológica</p>
+            </div>
+
+            <!-- Comparison Section -->
+            <div class="hierarchy-comparison mb-12">
+                <div class="hierarchy-box">
+                    <h3 class="text-2xl font-bold mb-4 text-red-400"><i class="fas fa-sitemap mr-2"></i>Modelo Tradicional</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Estructuras jerárquicas rígidas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Comunicación vertical y burocrática</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Silos departamentales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Ciclos de desarrollo lentos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-times-circle text-red-400 mt-1 mr-2"></i>
+                            <span>Resistencia al cambio</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hierarchy-box">
+                    <h3 class="text-2xl font-bold mb-4 green-accent"><i class="fas fa-users mr-2"></i>Modelo Ágil Spotify</h3>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                            <span>Equipos autónomos multidisciplinarios</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                            <span>Comunicación horizontal y transparente</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                            <span>Colaboración entre equipos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                            <span>Iteraciones rápidas e innovación</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle green-accent mt-1 mr-2"></i>
+                            <span>Adaptabilidad continua</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question section -->
+            <div class="bg-opacity-10 bg-white p-6 rounded-lg mb-8">
+                <h3 class="text-2xl font-bold mb-4">¿Por qué Spotify decide innovar en su gestión de equipos?</h3>
+                <p class="text-gray-300">Ante el rápido crecimiento y la necesidad de mantener la velocidad de innovación, Spotify desarrolló un modelo que equilibra autonomía y alineación, permitiendo escalar ágilmente mientras mantiene la cultura de startup.</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 flex justify-between items-center border-t border-gray-800">
+            <div>
+                <p class="text-sm text-gray-400">Ingeniería de Sistemas - 5to año</p>
+            </div>
+            <div class="slide-number">1/15</div>
+        </div>
+    </div>
+</body>
+</html>
